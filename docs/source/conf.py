@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'deepclean'
+project = 'DeepClean'
 copyright = '2019, Pradeep Singh'
 author = 'Pradeep Singh'
 
