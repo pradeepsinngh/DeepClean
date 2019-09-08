@@ -1,3 +1,0 @@
-# DeepClean
-
-Python package
