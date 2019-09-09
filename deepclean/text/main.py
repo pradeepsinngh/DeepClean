@@ -1,7 +1,5 @@
 
-import numpy as np
 import os, copy
-import re, string, unicodedata, copy, nltk
 
 class CleanText(object):
 
@@ -27,20 +25,8 @@ class CleanText(object):
         else:
             pass
 
-    #def print(self):
-    #    print('Hi, What up?')
-
     def _flatlist(self,lis):
         return [word for sent in lis for word in sent]
-
-    def __repr__(self):
-         return '\n'.join(map(str, self.data))
-
-    def __str__(self):
-        return '\n'.join(map(str, self.data))
-
-    def __iter__(self):
-        for i in self.data: yield i
 
     # create copy of your data
     def copy(self):
@@ -70,6 +56,9 @@ class CleanText(object):
     # removes all the blank line from the text file
     # returns list
     def clear_blank_lines(self,inplace=False):
+        """
+        Clear blank lines
+        """
         if not inplace: self = self.copy()
         self.data =  list(filter(str.strip,[each.rstrip() for each in self.data]))
         return self
