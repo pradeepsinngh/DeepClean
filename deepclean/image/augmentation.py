@@ -8,20 +8,79 @@ from deepclean.image.main import CleanImage
 
 class Augmentation(CleanImage):
 
+    """
+    A class used to represent Tokenization techniques for text.
+
+    ...
+
+    Attributes
+    ----------
+    says_str : str
+        a formatted string to print out what the animal says
+    name : str
+        the name of the animal
+    sound : str
+        the sound that the animal makes
+    num_legs : int
+        the number of legs the animal has (default 4)
+
+    Methods
+    -------
+    split_by_words(text)
+        Return the sentences splitted by white spaces.
+
+    split_by_words(text)
+        Retunr
+
+    split_into_sentences(text)
+
+    split_into_words(text)
+    """
+
     def __init__(self):
         pass
 
 
     def flip_image(self, image):
+        """Prints what the animals name is and what sound it makes.
+
+        If the argument `sound` isn't passed in, the default Animal
+        sound is used.
+
+        Parameters
+        ----------
+        text : str, optional
+            The sound the animal makes (default is None)
+
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
         """
-        """
+        
         img = CleanImage.read_image(self, image)
         flipped_img = np.fliplr(img)
         return flipped_img
 
     def translation(self, image, width, height, depth, shiftting = None):
+        """Prints what the animals name is and what sound it makes.
+
+        If the argument `sound` isn't passed in, the default Animal
+        sound is used.
+
+        Parameters
+        ----------
+        text : str, optional
+            The sound the animal makes (default is None)
+
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
         """
-        """
+
         img = CleanImage.read_image(self, image)
 
         HEIGHT = height
@@ -62,7 +121,21 @@ class Augmentation(CleanImage):
 
 
     def add_noise(self, img, width, height, depth):
-        """
+        """Prints what the animals name is and what sound it makes.
+
+        If the argument `sound` isn't passed in, the default Animal
+        sound is used.
+
+        Parameters
+        ----------
+        text : str, optional
+            The sound the animal makes (default is None)
+
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
         """
 
         img = CleanImage.read_image(self, img)
@@ -81,13 +154,21 @@ class Augmentation(CleanImage):
         return img
 
     def contrast_adjust(self, image, alpha=1.3, beta=20):
-        """
-        adjust constrast through gamma correction
-        newimg = image * alpha + beta
-        input:
-            image: np.uint8 or np.float32
-        output:
-            image: np.uint8 or np.float
+        """Prints what the animals name is and what sound it makes.
+
+        If the argument `sound` isn't passed in, the default Animal
+        sound is used.
+
+        Parameters
+        ----------
+        text : str, optional
+            The sound the animal makes (default is None)
+
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
         """
 
         img = CleanImage.read_image(self, image)
@@ -103,8 +184,21 @@ class Augmentation(CleanImage):
             return newimage
 
     def random_flip(self, image, lr, ud):
-        """
-        random flip image
+        """Prints what the animals name is and what sound it makes.
+
+        If the argument `sound` isn't passed in, the default Animal
+        sound is used.
+
+        Parameters
+        ----------
+        text : str, optional
+            The sound the animal makes (default is None)
+
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
         """
         img = CleanImage.read_image(self, image)
 
@@ -126,6 +220,24 @@ class Augmentation(CleanImage):
             crop: [target_height,target_width]
         output:
             croped image with shape[crop[0],crop[1],C]
+
+
+        Prints what the animals name is and what sound it makes.
+
+        If the argument `sound` isn't passed in, the default Animal
+        sound is used.
+
+        Parameters
+        ----------
+        text : str, optional
+            The sound the animal makes (default is None)
+
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
+
         """
         image = CleanImage.read_image(self, image)
 
@@ -138,11 +250,21 @@ class Augmentation(CleanImage):
         return image[th:th + crop[0], tw:tw + crop[1]]
 
     def image_pad(self, image,pad_width=None,axis=0,mode='symmetric'):
-        """
-        pad an image
-        like np.pad way
-        input:
-            image: ndarray [rgb]
+        """Prints what the animals name is and what sound it makes.
+
+        If the argument `sound` isn't passed in, the default Animal
+        sound is used.
+
+        Parameters
+        ----------
+        text : str, optional
+            The sound the animal makes (default is None)
+
+        Raises
+        ------
+        NotImplementedError
+            If no sound is set for the animal or passed in as a
+            parameter.
         """
         image = CleanImage.read_image(self, image)
         hei,wid=image.shape[0],image.shape[1]
