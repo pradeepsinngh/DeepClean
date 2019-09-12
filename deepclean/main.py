@@ -32,7 +32,7 @@ class Data(object):
 
     Methods
     -------
-    - getSummary() :     
+    - getSummary() :
     - _file_or_not() :
     - _reader() :
     - _read_image()
@@ -72,8 +72,8 @@ class Data(object):
             else:
                 pass
 
-         else:
-             pass
+        else:
+            pass
 
 
     def _flatlist(self,lis):
@@ -186,7 +186,7 @@ class Data(object):
             If file name is invalid, raise value error.
         """
 
-        if file == None or file is not:
+        if file == None: # or file is not:
             raise ValueError('file name not given or file does not exist. Check file name.')
 
         img = imageio.imread(file)
@@ -212,13 +212,12 @@ class Data(object):
             If file name is invalid, raise value error.
         """
 
-        if file == None or file is not:
+        if file == None: # or file is not:
             raise ValueError('file name not given or file does not exist. Check file name.')
 
         img = Image.open(image)
         size = img.size
         return size
-
 
 
     def _getSummary(self, data, dtype):
@@ -234,11 +233,11 @@ class Data(object):
                 Type of data (text or image)
 
         Returns
-        ----------
+        --------
                 Doesn't return anything
 
         Raises
-        ------
+        -------
         ValueError
                 If dtype value is not given/ invalid. dtype can only be: text or image
         """

@@ -5,7 +5,6 @@ from skimage.restoration import (denoise_tv_chambolle, denoise_bilateral,
                                  denoise_wavelet, estimate_sigma)
 from deepclean.image.main import CleanImage
 
-
 class Denoise():
     """
     Denoise is a sub-class  of Data Class which implements various methods
@@ -28,13 +27,13 @@ class Denoise():
 
         Parameters
         ----------
-        image : int (2d array of ints)
-                2d array of pixel values
+        image : ndarray
+                input data
 
         Returns
         ------
-        denoised_image : int (2d array of ints)
-                2d array of pixel values
+        denoised_image : ndarray
+                Denoised image
 
         """
         img = CleanImage.read_image(self, image)
@@ -47,13 +46,13 @@ class Denoise():
 
         Parameters
         ----------
-        image : int (2d array of ints)
-                2d array of pixel values
+        image : ndarray
+                input data
 
         Returns
         ------
-        denoised_image : int (2d array of ints)
-                2d array of pixel values
+        denoised_image : ndarray
+                Denoised image
 
         """
         img = CleanImage.read_image(self, image)
@@ -113,7 +112,7 @@ class Denoise():
         ------
         denoised_image : ndarray
                 Denoised image
-                
+
         """
         img = CleanImage.read_image(self, image)
         denoised_image = denoise_wavelet(img, sigma=0.1)
