@@ -15,57 +15,35 @@ nltk.download('wordnet')
 
 
 
-class Normalize(CleanText):
+class Normalize(Data):
     """
-    A class used to represent Tokenization techniques for text.
+    Normalize is a sub-class  of Data Class which implements various methods
+    for normalizing text data.
 
     ...
 
     Attributes
     ----------
-    says_str : str
-        a formatted string to print out what the animal says
-    name : str
-        the name of the animal
-    sound : str
-        the sound that the animal makes
-    num_legs : int
-        the number of legs the animal has (default 4)
 
-    Methods
-    -------
-    split_by_words(text)
-        Return the sentences splitted by white spaces.
 
-    split_by_words(text)
-        Retunr
-
-    split_into_sentences(text)
-
-    split_into_words(text)
     """
 
     def __inti__(self):
         pass
 
     def remove_non_ascii(self, words):
-        """ Remove non-ASCII characters from list of tokenized words
-
-        Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Remove non-ASCII characters from list of tokenized words.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        words : str
+                tokenized words given in list
 
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        Returns
+        --------
+        new_words : str
+                list of words ignoring ASCII
 
         """
         new_words = []
@@ -78,36 +56,28 @@ class Normalize(CleanText):
         """
         Remove numbers from given text.
 
-        Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
-
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+                data (text) in  words, sentences or paragraph format.
 
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        Returns
+        --------
+        result : str
+                data with numbers removed
 
         """
         result = re.sub(r'\d+', '', text)
         return result
 
     def remove_whitespace(self, text):
-        """ Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Remove white spaces from given data
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+                data (text) in  words, sentences or paragraph format.
 
         Raises
         ------
@@ -119,23 +89,44 @@ class Normalize(CleanText):
         return result
 
 
-    def to_lowercase(self, text, words = True):
+    def clear_blank_lines(self, text, inplace=False):
         """
-        Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        Clear blank lines from text data.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            data (text) in  words, sentences or paragraph format.
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        res : str
+            text without blank lines
+
+        """
+        if not inplace:
+            temp = text.copy()
+
+        res =  list(filter(str.strip,[each.rstrip() for each in text]))
+        return res
+
+
+    def to_lowercase(self, text, words = True):
+        """
+        Convert uppercase characters to lower case throughout the data.
+
+        Parameters
+        ----------
+        text : str
+                data (text) in  words, sentences or paragraph format.
+
+        words : boolean (True/ False)
+
+        Returns
+        --------
+        new_words : str
+                list of new words with all characters converted to lowercase
+
         """
         new_words = []
 
@@ -148,21 +139,19 @@ class Normalize(CleanText):
             return text.lower()
 
     def remove_punctuation(self, words):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Remove punctuations from the text/ words/ sentences.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            data (text) in  words, sentences or paragraph format.
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        new_words : list of str
+                list of new words with punctuations removed
+
         """
         new_words = []
         for word in words:
@@ -172,21 +161,20 @@ class Normalize(CleanText):
         return new_words
 
     def replace_numbers(self, words):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Replace numbers (digits - 0,1,2,3) with their words.
+        Eg: 0 > One
+            1 > Two etc.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        words : list of str
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        new_words : list of str
+                list of words with occurances of numbers converted to words.
+
         """
 
         p = inflect.engine()
@@ -200,21 +188,17 @@ class Normalize(CleanText):
         return new_words
 
     def remove_stopwords(self, words):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Remove stopwords from text.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        words : list of str
+            list of words
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        new_words : new list of words with stop words being removed
         """
         new_words = []
         for word in words:
@@ -223,21 +207,18 @@ class Normalize(CleanText):
         return new_words
 
     def stem_words(self, words):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Applies stemming
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        words : list of str
+            list of words
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        stems : new list of words with stemming applied
+
         """
         stemmer = LancasterStemmer()
         stems = []
@@ -247,21 +228,18 @@ class Normalize(CleanText):
         return stems
 
     def lemmatize_verbs(self, words):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Applies lemmatization
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        words : list of str
+            list of words
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        lemmas : new list of words with lemmatization applied
+
         """
         lemmatizer = WordNetLemmatizer()
         lemmas = []

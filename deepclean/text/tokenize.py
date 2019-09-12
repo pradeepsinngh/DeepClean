@@ -4,113 +4,84 @@ from deepclean.text.main import CleanText
 
 class Tokenize(CleanText):
     """
-    A class used to represent Tokenization techniques for text.
+    Tokenize is a sub-class  of Data Class which implements various methods
+    for tokinizing text data.
 
     ...
 
     Attributes
     ----------
-    says_str : str
-        a formatted string to print out what the animal says
-    name : str
-        the name of the animal
-    sound : str
-        the sound that the animal makes
-    num_legs : int
-        the number of legs the animal has (default 4)
 
-    Methods
-    -------
-    split_by_words(text)
-        Return the sentences splitted by white spaces.
 
-    split_by_words(text)
-        Retunr
-
-    split_into_sentences(text)
-
-    split_into_words(text)
     """
 
     def __inti__(self):
         pass
 
     def split_by_whitespace(self, text):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Split the given text wherever whitespace exist.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            list of sentences/ words / paragraph - text data
 
-        Raises
+        Retunrs
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        words : str
+                list of words splitted at whitespace
         """
         words = text.split()
         return words
 
     def split_by_words(self, text):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Splits the given text into words.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            list of sentences/ words / paragraph - text data
 
-        Raises
+        Retunrs
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        words : str
+                list of words splitted by spearators like -- ?,! etc.
         """
         words = re.split('\s|(?<!\d)[,.](?!\d)', text)
         return words
 
     def split_into_sentences(self, text):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Split the sentences into sentences.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            list of sentences/ words / paragraph - text data
 
-        Raises
+        Retunrs
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        sentences : str
+                list of sentences splitted at "."
         """
         sentences = [each.split('.') for each in self.data]
         return sentences
 
     def split_into_words(self, text):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Split the text into words.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            list of sentences/ words / paragraph - text data
 
-        Raises
+        Retunrs
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        words : str
+                list of words splitted at space.
         """
         tokens = [each.split(' ') for each in self.data]
         return tokens

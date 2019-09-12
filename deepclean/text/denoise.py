@@ -1,118 +1,77 @@
 import re, string
 import contractions
-#import inflect
 from bs4 import BeautifulSoup
 from deepclean.text.main import CleanText
 
 
 class Denoise(CleanText):
     """
-    A class used to represent Tokenization techniques for text.
+    Denoise is a sub-class  of Data Class which implements various methods
+    for denoising text data.
 
     ...
 
     Attributes
     ----------
-    says_str : str
-        a formatted string to print out what the animal says
-    name : str
-        the name of the animal
-    sound : str
-        the sound that the animal makes
-    num_legs : int
-        the number of legs the animal has (default 4)
 
-    Methods
-    -------
-    split_by_words(text)
-        Return the sentences splitted by white spaces.
 
-    split_by_words(text)
-        Retunr
-
-    split_into_sentences(text)
-
-    split_into_words(text)
     """
 
     def __init__(self):
         pass
 
     def strip_html(self, text):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Remove html tags from data.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            sentences/ words / paragraph - text data
 
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        Returns
+        ----------
+        no_html_data : str
+                data with html tags removed
+
         """
         soup = BeautifulSoup(text, "html.parser")
-        return soup.get_text()
+        no_html_data = soup.get_text()
+        return no_html_data
 
     def remove_between_square_brackets(self, text):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Remove special characters from given text.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            list of sentences/ words / paragraph - text data
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        new_text : str
+                new data with special characters removed
         """
-        return re.sub('\[[^]]*\]', '', text)
 
-    def denoise_text(self, text):
-        """Prints what the animals name is and what sound it makes.
+        new_text = re.sub('\[[^]]*\]', '', text)
+        return new_text
 
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
-
-        Parameters
-        ----------
-        text : str, optional
-            The sound the animal makes (default is None)
-
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
-        """
-        text = strip_html(text)
-        text = remove_between_square_brackets(text)
-        return text
 
     def replace_contractions(self, text):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Replaces contractions from data.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        text : str
+            list of sentences/ words / paragraph - text data
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
-        """        
-        return contractions.fix(text)
+        new_text : str
+                new data with contractions removed
+        """
+
+        rep_contractions = contractions.fix(text)
+        return rep_contractions
