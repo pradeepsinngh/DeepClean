@@ -1,31 +1,44 @@
-=====================================
-DeepClean: clean multi-modal data
-=====================================
+DeepClean
+============
 
 .. include:: ../README.rst
 
 Features
-=============
-* Single package for multi modal data cleaning
-* Fast Experimentation
-* Modularity in the data (processing) pipeline
+-----------
+- Single package for multi modal data pre-processing and cleaning.
+- Fast Experimentation
+- Modularity in the data (processing) pipeline
+- Implements techniques like:
+    - Normalization
+    - Tokenization
+    - Augmentation
+    - Denoising
+    - and much more.
 
 Installation
-===============
-``pip install deepclean``
+--------------
+.. code-block:: python
 
-.. toctree::
+   pip install deepclean
+
+Table of Contents
+------------------
+ .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    Getting Started
    Modules
-   Experiments
+   Examples
 
 
+At a Glance
+--------------
+.. code-block:: python
 
-Indices and tables
-==================
+   import deepclean.main.text as dctxt
+   normalizer = dctxt.Normalizer()
+
+
 
 * :ref:`genindex`
 * :ref:`modindex`
