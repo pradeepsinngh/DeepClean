@@ -6,58 +6,38 @@ import cv2, os
 
 from deepclean.image.main import CleanImage
 
-class Normalize(CleanImage):
+class Normalize(Data):
     """
-    A class used to represent Tokenization techniques for text.
+    Normalize is a sub-class  of Data Class which implements various methods
+    for normalizing text data.
 
     ...
 
     Attributes
     ----------
-    says_str : str
-        a formatted string to print out what the animal says
-    name : str
-        the name of the animal
-    sound : str
-        the sound that the animal makes
-    num_legs : int
-        the number of legs the animal has (default 4)
 
-    Methods
-    -------
-    split_by_words(text)
-        Return the sentences splitted by white spaces.
 
-    split_by_words(text)
-        Retunr
-
-    split_into_sentences(text)
-
-    split_into_words(text)
     """
 
     def __inti__(self):
         pass
 
     def remove_mean(self, image):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Subtract give mean from each pixel of the image.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        image : ndarray
+                input data
 
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        Returns:
+        ----------
+        img : int (2d array of ints)
+                normalized 2d array of pixel values
         """
 
-        img = CleanImage.read_image(self, image)
+        img = Data.read_image(self, image)
 
         mean = [0.48462227599918,  0.45624044862054, 0.40588363755159]
         img = img.astype(np.float32)
@@ -66,45 +46,46 @@ class Normalize(CleanImage):
 
 
     def standardize(self, image, mean=0.48462227599918, std=0.22889466674951):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        standardize a given image, by subtracting mean and dividing by standar deviation.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        image : ndarray
+                input data
 
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+        mean : float
+                given mean, will be subtracted from each pixel
+
+        std : float
+                given standar deviation, will be subtracted from each pixel.
+
+        Returns
+        ---------
+        img : int (2d array of ints)
+                2d array of pixel values
+
+
         """
-        img = CleanImage.read_image(self, image)
+        img = Data.read_image(self, image)
         img = img.astype(np.float32) / 255.0
         img = np.divide(np.subtract(img, mean), std)
         return img
 
     def sample_wise_normalization(self, image):
-        """Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        """
+        Sample wise normalization.
 
         Parameters
         ----------
-        text : str, optional
-            The sound the animal makes (default is None)
+        image : ndarray
+                input data
 
-        Raises
+        Returns
         ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
+
         """
-        img = CleanImage.read_image(self, image)
+        img = Data.read_image(self, image)
         data = img
 
         data.astype(np.float32)
