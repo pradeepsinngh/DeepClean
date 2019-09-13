@@ -21,8 +21,8 @@ Installation
 
    pip install deepclean
 
-Table of Contents
-------------------
+Contents
+-------------------
  .. toctree::
    :maxdepth: 2
 
