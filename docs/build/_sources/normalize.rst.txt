@@ -1,2 +1,0 @@
-.. automodule:: normalize.py
-  :members
