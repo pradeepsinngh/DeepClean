@@ -3,9 +3,9 @@ import cv2
 import scipy.ndimage as nd
 from skimage.restoration import (denoise_tv_chambolle, denoise_bilateral,
                                  denoise_wavelet, estimate_sigma)
-from deepclean.image.main import CleanImage
+from deepclean.main import Data
 
-class Denoise():
+class Denoise(Data):
     """
     Denoise is a sub-class  of Data Class which implements various methods
     for denoising image data.
@@ -36,7 +36,7 @@ class Denoise():
                 Denoised image
 
         """
-        img = CleanImage.read_image(self, image)
+        img = Data._read_image(self, image)
         denoised_image = nd.gaussian_filter(img, 2)
         return denoised_image
 
@@ -55,7 +55,7 @@ class Denoise():
                 Denoised image
 
         """
-        img = CleanImage.read_image(self, image)
+        img = Data._read_image(self, image)
         denoised_image = nd.median_filter(img, 3)
         return denoised_image
 
@@ -74,7 +74,7 @@ class Denoise():
                 Denoised image
 
         """
-        img = CleanImage.read_image(self, image)
+        img = Data._read_image(self, image)
         denoised_image = denoise_tv_chambolle(img,  weight=100)
         return denoised_image
 
@@ -94,8 +94,8 @@ class Denoise():
                 Denoised image
 
         """
-        img = CleanImage.read_image(self, image)
-        denoised_image = denoise_bilateral(img, sigma=0.1)
+        img = Data._read_image(self, image)
+        denoised_image = denoise_bilateral(img)
         return denoised_image
 
     def wavelet_denoised(self, image):
@@ -114,6 +114,6 @@ class Denoise():
                 Denoised image
 
         """
-        img = CleanImage.read_image(self, image)
+        img = Data._read_image(self, image)
         denoised_image = denoise_wavelet(img, sigma=0.1)
         return denoised_image

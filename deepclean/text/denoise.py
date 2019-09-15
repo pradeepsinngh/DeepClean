@@ -1,10 +1,10 @@
 import re, string
 import contractions
 from bs4 import BeautifulSoup
-from deepclean.text.main import CleanText
+from deepclean.main import Data
 
 
-class Denoise(CleanText):
+class Denoise(Data):
     """
     Denoise is a sub-class  of Data Class which implements various methods
     for denoising text data.

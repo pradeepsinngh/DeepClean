@@ -50,7 +50,7 @@ class Data(object):
     sentences = []
     dim = []
 
-    def __init__(self,fname='', dtype = None):
+    def __init__(self, fname='', dtype = None):
 
         if dtype == "text":
             if fname:
@@ -64,7 +64,7 @@ class Data(object):
             else:
                 pass
 
-        elif ftype == "image":
+        elif dtype == "image":
             if fname:
                 self.file_name = fname
                 self.shape = self.getDim(fname)

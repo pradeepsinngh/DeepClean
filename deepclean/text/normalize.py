@@ -1,4 +1,4 @@
-from deepclean.text.main import CleanText
+from deepclean.main import Data
 import re, string, unicodedata
 import contractions
 import inflect

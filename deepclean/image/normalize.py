@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import cv2, os
 
-from deepclean.image.main import CleanImage
+from deepclean.main import Data
 
 class Normalize(Data):
     """
@@ -37,7 +37,7 @@ class Normalize(Data):
                 normalized 2d array of pixel values
         """
 
-        img = Data.read_image(self, image)
+        img = Data._read_image(self, image)
 
         mean = [0.48462227599918,  0.45624044862054, 0.40588363755159]
         img = img.astype(np.float32)
@@ -67,7 +67,7 @@ class Normalize(Data):
 
 
         """
-        img = Data.read_image(self, image)
+        img = Data._read_image(self, image)
         img = img.astype(np.float32) / 255.0
         img = np.divide(np.subtract(img, mean), std)
         return img
@@ -85,7 +85,7 @@ class Normalize(Data):
         ------
 
         """
-        img = Data.read_image(self, image)
+        img = Data._read_image(self, image)
         data = img
 
         data.astype(np.float32)

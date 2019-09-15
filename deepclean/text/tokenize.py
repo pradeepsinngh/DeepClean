@@ -1,8 +1,8 @@
 import re
 from bs4 import BeautifulSoup
-from deepclean.text.main import CleanText
+from deepclean.main import Data
 
-class Tokenize(CleanText):
+class Tokenize(Data):
     """
     Tokenize is a sub-class  of Data Class which implements various methods
     for tokinizing text data.

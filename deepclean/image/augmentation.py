@@ -37,11 +37,11 @@ class Augmentation(Data):
                 Denoised image
         """
 
-        img = Data.read_image(self, image)
+        img = Data._read_image(self, image)
         flipped_img = np.fliplr(img)
         return flipped_img
 
-    def translation(self, image, width, height, depth, shiftting = None):
+    def translation(self, image, shifting, width, height):
         """
         Translation
 
@@ -57,12 +57,12 @@ class Augmentation(Data):
 
         """
 
-        img = Data.read_image(self, image)
+        img = Data._read_image(self, image)
 
         HEIGHT = height
         WIDTH = width
 
-        if shiftting == 'left':
+        if shifting == 'left':
             for i in range(HEIGHT, 1, -1):
                 for j in range(WIDTH):
                     if (i < HEIGHT-20):
@@ -70,14 +70,14 @@ class Augmentation(Data):
                     elif (i < HEIGHT-1):
                         img[j][i] = 0
 
-        elif shiftting == 'right':
+        elif shifting == 'right':
             # Shifting target_height
             for j in range(WIDTH):
                 for i in range(HEIGHT):
                     if (i < HEIGHT-20):
                         img[j][i] = img[j][i+20]
 
-        elif Shifting == 'up':
+        elif shifting == 'up':
             # Shifting Up
             for j in range(WIDTH):
                 for i in range(HEIGHT):
@@ -118,12 +118,12 @@ class Augmentation(Data):
 
         """
 
-        img = Data.read_image(self, img)
+        img = Data._read_image(self, img)
         HEIGHT = height
         WIDTH = width
         DEPTH = depth
 
-        noise = np.random.randint(5, size = (164, 278, 3), dtype = 'uint8')
+        noise = np.random.randint(5, size = (200, 300, 2), dtype = 'uint8')
 
         for i in range(WIDTH):
             for j in range(HEIGHT):
@@ -149,7 +149,7 @@ class Augmentation(Data):
 
         """
 
-        img = Data.read_image(self, image)
+        img = Data._read_image(self, image)
         newimage = img.astype(np.float32) * alpha + beta
 
         if type(img[0,0,0])==np.uint8:
@@ -171,11 +171,11 @@ class Augmentation(Data):
                 input data
 
         Returns
-        ------
+        -------
         denoised_image : ndarray, ints, floats
                 Denoised image
         """
-        img = Data.read_image(self, image)
+        img = Data._read_image(self, image)
 
         if lr:
             if np.random.random() > 0.5:
@@ -204,7 +204,7 @@ class Augmentation(Data):
         croped image with shape[crop[0], crop[1], C]
 
         """
-        image = Data.read_image(self, image)
+        image = Data._read_image(self, image)
 
         hei, wid, _ = image.shape
         if crop is None:
@@ -229,7 +229,7 @@ class Augmentation(Data):
         denoised_image : ndarray, ints, floats
                 Denoised image
         """
-        image = Data.read_image(self, image)
+        image = Data._read_image(self, image)
         hei,wid=image.shape[0],image.shape[1]
 
         if pad_width is None:
