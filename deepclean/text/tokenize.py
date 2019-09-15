@@ -66,7 +66,7 @@ class Tokenize(Data):
         sentences : str
                 list of sentences splitted at "."
         """
-        sentences = [each.split('.') for each in self.data]
+        sentences = [each.split('.') for each in text]
         return sentences
 
     def split_into_words(self, text):
@@ -83,5 +83,5 @@ class Tokenize(Data):
         words : str
                 list of words splitted at space.
         """
-        tokens = [each.split(' ') for each in self.data]
+        tokens = [each.split(' ') for each in text]
         return tokens
