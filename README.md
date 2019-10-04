@@ -1,6 +1,6 @@
 # DeepClean
 
-Python package
+Python package.
 
 
 ## Inspiration:
