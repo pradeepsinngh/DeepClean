@@ -8,13 +8,6 @@ class Denoise(Data):
     """
     Denoise is a sub-class  of Data Class which implements various methods
     for denoising text data.
-
-    ...
-
-    Attributes
-    ----------
-
-
     """
 
     def __init__(self):

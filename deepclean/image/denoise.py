@@ -9,13 +9,6 @@ class Denoise(Data):
     """
     Denoise is a sub-class  of Data Class which implements various methods
     for denoising image data.
-
-    ...
-
-    Attributes
-    ----------
-
-
     """
 
     def __init__(self):
@@ -82,7 +75,6 @@ class Denoise(Data):
         """
         Denoise image using bilateral filter.
 
-
         Parameters
         ----------
         image : ndarray
@@ -101,7 +93,6 @@ class Denoise(Data):
     def wavelet_denoised(self, image):
         """
         Perform wavelet denoising on an image.
-
 
         Parameters
         ----------

@@ -10,19 +10,12 @@ class Normalize(Data):
     """
     Normalize is a sub-class  of Data Class which implements various methods
     for normalizing text data.
-
-    ...
-
-    Attributes
-    ----------
-
-
     """
 
     def __inti__(self):
         pass
 
-    def remove_mean(self, image):
+    def remove_mean(self, image, mean):
         """
         Subtract give mean from each pixel of the image.
 
@@ -38,8 +31,6 @@ class Normalize(Data):
         """
 
         img = Data._read_image(self, image)
-
-        mean = [0.48462227599918,  0.45624044862054, 0.40588363755159]
         img = img.astype(np.float32)
         img = np.subtract(np.divide(img, 255.0), mean)
         return img
@@ -47,7 +38,7 @@ class Normalize(Data):
 
     def standardize(self, image, mean=0.48462227599918, std=0.22889466674951):
         """
-        standardize a given image, by subtracting mean and dividing by standar deviation.
+        Standardize a given image, by subtracting mean and dividing by standar deviation.
 
         Parameters
         ----------
@@ -62,9 +53,8 @@ class Normalize(Data):
 
         Returns
         ---------
-        img : int (2d array of ints)
+        img: int (2d array of ints)
                 2d array of pixel values
-
 
         """
         img = Data._read_image(self, image)
@@ -83,6 +73,8 @@ class Normalize(Data):
 
         Returns
         ------
+        image : ndarray
+                normalized image
 
         """
         img = Data._read_image(self, image)

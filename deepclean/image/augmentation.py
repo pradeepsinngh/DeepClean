@@ -8,14 +8,8 @@ from deepclean.main import Data
 
 class Augmentation(Data):
     """
-    Augmentation is a sub-class  of Data Class which implements various methods
+    Augmentation is a sub-class of Data Class which implements various methods
     for augmenting image data.
-
-    ...
-
-    Attributes
-    ----------
-
     """
 
     def __init__(self):
@@ -252,26 +246,3 @@ class Augmentation(Data):
             newimage=np.squeeze(np.pad(image[:,:,np.newaxis],pad_width,mode))
 
         return cv2.resize(newimage,(wid,hei),interpolation=cv2.INTER_NEAREST)
-
-
-# REf: https://freecontent.manning.com/the-computer-vision-pipeline-part-3-image-preprocessing/
-
-def de_texture():
-    """
-    """
-    pass
-
-def de_color():
-    """
-    """
-    pass
-
-def edge_enhanced():
-    """
-    """
-    pass
-
-def salient_edge_map():
-    """
-    """
-    pass

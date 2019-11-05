@@ -143,12 +143,12 @@ class Data(object):
 
     def _reader(self,file):
         """
-
+        Read given file.
 
         Parameters
         ----------
         text : str, optional
-            The sound the animal makes (default is None)
+            file name
 
         Raises
         ------
@@ -186,7 +186,7 @@ class Data(object):
             If file name is invalid, raise value error.
         """
 
-        if file == None: # or file is not:
+        if type(file) == None: # or file is not:
             raise ValueError('file name not given or file does not exist. Check file name.')
 
         img = imageio.imread(file)
@@ -239,7 +239,7 @@ class Data(object):
         Raises
         -------
         ValueError
-                If dtype value is not given/ invalid. dtype can only be: text or image
+                If dtype value is not given/ invalid. dtype can only be: text or image as of now.
         """
 
         if dtype == "text":

@@ -6,13 +6,6 @@ class Tokenize(Data):
     """
     Tokenize is a sub-class  of Data Class which implements various methods
     for tokinizing text data.
-
-    ...
-
-    Attributes
-    ----------
-
-
     """
 
     def __inti__(self):
@@ -27,7 +20,7 @@ class Tokenize(Data):
         text : str
             list of sentences/ words / paragraph - text data
 
-        Retunrs
+        Returns
         ------
         words : str
                 list of words splitted at whitespace
@@ -44,7 +37,7 @@ class Tokenize(Data):
         text : str
             list of sentences/ words / paragraph - text data
 
-        Retunrs
+        Returns
         ------
         words : str
                 list of words splitted by spearators like -- ?,! etc.
@@ -61,7 +54,7 @@ class Tokenize(Data):
         text : str
             list of sentences/ words / paragraph - text data
 
-        Retunrs
+        Returns
         ------
         sentences : str
                 list of sentences splitted at "."
@@ -78,7 +71,7 @@ class Tokenize(Data):
         text : str
             list of sentences/ words / paragraph - text data
 
-        Retunrs
+        Returns
         ------
         words : str
                 list of words splitted at space.

@@ -19,13 +19,6 @@ class Normalize(Data):
     """
     Normalize is a sub-class  of Data Class which implements various methods
     for normalizing text data.
-
-    ...
-
-    Attributes
-    ----------
-
-
     """
 
     def __inti__(self):
@@ -79,11 +72,6 @@ class Normalize(Data):
         text : str
                 data (text) in  words, sentences or paragraph format.
 
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
         """
         result = text.strip()
         return result
